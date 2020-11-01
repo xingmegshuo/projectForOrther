@@ -1,0 +1,79 @@
+{% extends 'base.html' %}
+{% block title %}首页{% endblock %}
+{% block style %}
+
+    * {
+    margin: 0;
+    border: 0;
+    padding: 0;
+    font-size: 13pt;
+    }
+
+    #nav {
+    height: 40px;
+    }
+
+    #nav ul {
+    list-style: none;
+    margin-left: 50px;
+    }
+
+    #nav li {
+    display: inline;
+    line-height: 40px;
+    float:left
+    }
+
+    #nav a {
+    text-decoration: none;
+    padding: 20px 20px;
+    }
+
+    #nav a:hover {
+    }
+
+{% endblock %}
+{% block div %}
+
+    <div class="login-box" id="demo">
+        <div class="input-content">
+
+            <div class="login_tit">
+                <div>
+                    <i class="tit-bg left"></i>
+                    城市公交智能查询系统
+                    <i class="tit-bg right"></i>
+                </div>
+            </div>
+            <nav class="navbar navbar-expand-lg navbar-dark bg-dark" style="font-family: KaiTi;font-size: 18px;">
+                <div class="collapse navbar-collapse" id="nav" style="width: 800px;margin-left: -100px" >
+                    <ul class="navbar-nav mr-auto">
+
+                        <li class="nav-item">
+                            <a class="nav-link" style="color: red;">城市公交线路查询</a>
+                        </li>
+                        <li class="nav-item">
+{#                            <a class="nav-link" href="bus_now">实时公交信息查询</a>#}
+                        </li>
+                        <li style="margin-left: 200px">
+                            <a href="comment/{{ u.id }}/">在线留言</a>
+                        </li>
+
+                    </ul>
+                </div>
+
+            </nav>
+            <div class="col-sm-10" style="margin-top: 80px;width: 500px;height: 200px">
+                <form class="sf" action="/search" method="post"  >
+                    {% csrf_token %}
+                    <input class="si" type="search" placeholder="查询线路"style="width: 300px;height: 28px" name="text">
+                    <button class="sb" type="submit" style="background-color: mediumblue">搜索</button>
+                </form>
+            </div>
+
+
+        </div>
+        <div class="canvaszz"></div>
+        <canvas id="canvas"></canvas>
+    </div>
+{% endblock %}

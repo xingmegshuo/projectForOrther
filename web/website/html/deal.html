@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+{% block title %}投递信息{% endblock %}
+
+{% block body %}
+
+    <div class="container" style="margin-top:20px;margin-bottom: 500px">
+        <div class="row">
+            <div class="col-sm-10">
+                {% load screenF %}
+                {% for row in r %}
+                    <article>
+                        <div class="row">
+                            <div class="col-sm-8">
+                                招聘人员：
+                                <a class="jobName"  href="/ch/{{ row.id }}/">{{ row.com.name }}</a>
+                            </div>
+                            <div class="col-sm-4">
+                                应聘人员：
+                                <a class="company" href="{{ row.cv.resume.url }}">{{ row.cv.name }}</a>
+                                <img src="{{ row.cv.photo.url }}" style="height: 40px;width: 50px;">
+                            </div>
+                        </div>
+                        <div class="row" style="height:20px"></div>
+                        <div class="row">
+                            <div class="col-sm-8">
+                                状态:
+                                {% if row.result is None and row.is_have is False %}
+                                    未处理
+                                {% elif row.is_have is True %}
+                                    已面试,等待结果
+                                {% elif row.is_have is False %}
+                                    未面试
+                                {% elif row.result is True and row.is_have is True %}
+                                    面试通过
+                                {% elif row.result is False and row.is_have is True %}
+                                    面试未通过
+                                {% endif %}
+                                <a class="salary" style="color:red;font-size:18px;margin-right: 20px;"></a>
+                            </div>
+                            <div class="col-sm-4">
+                                投递职位：
+                                {{ row.zp.jobName }}
+                            </div>
+                        </div>
+                    </article>
+                {% endfor %}
+
+            </div>
+
+        </div>
+    </div>
+
+    {#{% include 'page.html' %}#}
+    <script>
+        $($('.nav-item')[4]).addClass('active');
+    </script>
+{% endblock %}

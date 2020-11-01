@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block title %}公交实时查询{% endblock %}
+{% block div %}
+        <div class="login-box" id="demo">
+        <div class="input-content" >
+            <form action="/bus_at" method="post" >
+                {% csrf_token %}
+                <input type="text" name="station" placeholder="请输入当前站点" style="width: 200px;height: 30px">
+                <input type="submit"style="width: 50px;height: 35px;background-color: #CC2222"value="提交">
+
+            </form>
+        </div>
+        <div class="canvaszz"></div>
+        <canvas id="canvas" style="width: 100%;height: 100%"></canvas>
+
+    </div>
+
+{% endblock %}

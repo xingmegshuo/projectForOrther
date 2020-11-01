@@ -1,0 +1,119 @@
+{% extends 'base.html' %}
+{% block title %}发布职位{% endblock %}
+{% block css %}
+    <style type="text/css">
+
+
+        .section {
+            max-width: 920px;
+            margin-top: 5%;
+        }
+
+        .std {
+            padding: 30px;
+            padding-left: 80px;
+            background-image: url("/static/book1.jpg");
+            background-repeat: no-repeat;
+        }
+
+        .jl {
+            background-image: url("/static/book2.jpg");
+            background-repeat: no-repeat;
+        }
+
+        .jl textarea {
+            width: 90%;
+            height: 120px;
+            resize: none;
+            background-color: transparent;
+        }
+
+        .std input {
+            background-color: transparent;
+            border-bottom: 1px solid #666;
+            border-top: 0px;
+            border-left: 0px;
+            border-right: 0px;
+            font-family: KaiTi;
+            font-size: 18px;
+        }
+
+        .submit {
+            float: right;
+            margin-top: 30px;
+
+        }
+
+        .submit input {
+            width: 88px;
+            height: 88px;
+            border-radius: 44px;
+            background-color: #231f20;
+            color: #fff;
+            border: 2px solid #00b38a;
+        }
+    </style>
+{% endblock %}
+{% block body %}
+    <div class="section col-md-9 offset-md-3" style="height: 1000px">
+        <div class="container"
+             style="margin-bottom: 200px;margin-left:0px">
+
+            <div class="col-md-5 offset-md-3">
+                <form action="/change/{{ zp.id }}/" id="form_zc" method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <div class="form-group">
+                        <label for="name">职位名称：</label>
+                        <input type="text" class="form-control" id="name" placeholder="输入职位名称" name="jobName"
+                        value="{{ zp.jobName }}">
+                    </div>
+                    <div class="form-group">
+                        <label for="user">职务：</label>
+                        <input type="" class="form-control" id="user" placeholder="请输入职务" name="jobTitle"
+                        value="{{ zp.jobTitle }}">
+                    </div>
+                    <div class="form-group">
+                        <label for="user">岗位类型：</label>
+                        <input type="" class="form-control" id="user" placeholder="请输入行业" name="jobType"
+                        value="{{ zp.jobType }}">
+                    </div>
+                    <div class="form-group">
+                        <label for="user">岗位编号：</label>
+                        <input type="number" class="form-control" id="user" placeholder="请输入编号" name="number"
+                        value="{{ zp.number }}">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="pwd">岗位介绍：</label>
+                        <input type="text" class="form-control" id="pwd" placeholder="输入岗位介绍" name="jobprofile"
+                               style="height:200px;font-size:12px;" value="{{ zp.jobprofile }}">
+                    </div>
+                    <div class="form-group">
+                        <label for="user">学历要求：</label>
+                        <input type="" class="form-control" id="user" placeholder="请输入学历要求" name="academic"
+                        value="{{ zp.academic }}">
+                    </div>
+                    <div class="form-group">
+                        <label for="user">经验要求：</label>
+                        <input type="" class="form-control" id="user" placeholder="请输入经验要求" name="pre"
+                        value="{{ zp.pre }}">
+                    </div>
+                    <div class="form-group">
+                        <label for="user">福利待遇：</label>
+                        <input type="" class="form-control" id="user" placeholder="请输入福利待遇" name="welfare"
+                        value="{{ zp.welfare }}">
+                    </div>
+                    <div class="form-group">
+                        <label for="user">招聘人数：</label>
+                        <input type="number" class="form-control" id="user" placeholder="请输入招聘人数" name="need_number"
+                        value="{{ zp.need_number }}">
+                    </div>
+                    <input id="submit_zc" class="btn btn-success btn-block" type="submit" value="提交">
+                </form>
+            </div>
+        </div>
+
+
+    </div>
+
+{% endblock %}

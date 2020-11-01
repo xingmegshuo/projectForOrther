@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block title %}搜索结果{% endblock %}
+{% block div %}
+    <div class="login-box" id="demo">
+        <div class="input-content" style="margin-top: -200px">
+            <p style="font-size: 50px;color: #0E2D5F">搜索结果展示</p>
+            <ul style="color: #CC2222;font-size: 40px;border: 2px ">
+                {% for i in result %}
+
+                    <li><a href="st/{{ i.id }}/">{{ i.name }}</a></li>
+                {% endfor %}
+            </ul>
+        </div>
+        <div class="canvaszz"></div>
+        <canvas id="canvas"></canvas>
+    </div>
+{% endblock %}

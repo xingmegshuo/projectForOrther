@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% block title %}注册{% endblock %}
+{% block div %}
+    <div class="login-box" id="demo">
+        <div class="input-content">
+            <div class="login_tit">
+                <div>
+                    <i class="tit-bg left"></i>
+                    城市公交智能查询系统
+                    <i class="tit-bg right"></i>
+                </div>
+                <p style="color: red">{{ mes }}</p>
+            </div>
+            <form action="/regist" method="post">
+                {% csrf_token %}
+                <p class="p user_icon">
+                    <input type="text" name="account" placeholder="账号" autocomplete="off" class="login_txtbx">
+                </p>
+                <p class="p pwd_icon">
+                    <input type="password" name="password" placeholder="密码" autocomplete="off" class="login_txtbx">
+                </p>
+                <p class="p pwd_icon">
+                    <input type="password" name="password_2" placeholder="确认密码" autocomplete="off" class="login_txtbx">
+                </p>
+                <p class="p pwd_icon">
+                    <input type="text" name="phone" placeholder="手机号" autocomplete="off" class="login_txtbx">
+                </p>
+                {#     <div class="p val_icon">#}
+                {#        <div class="checkcode">#}
+                {#          <input type="text" id="J_codetext" placeholder="验证码" autocomplete="off" maxlength="4" class="login_txtbx">#}
+                {#          <canvas class="J_codeimg" id="myCanvas" onclick="createCode()" onselectstart="return false">对不起，您的浏览器不支持canvas，请下载最新版浏览器!</canvas>#}
+                {#        </div>#}
+                {#        <a class="ver_btn" onclick="createCode();" onselectstart="return false">看不清，换一张</a>#}
+                {#      </div>      #}
+                <div class="signup">
+                    <a class="gv" href="/">登&nbsp;&nbsp;录</a>
+                    <a class="gv"><input type="submit" value="注&nbsp;&nbsp;册"></a>
+                </div>
+            </form>
+        </div>
+        <div class="canvaszz"></div>
+        <canvas id="canvas"></canvas>
+    </div>
+{% endblock %}

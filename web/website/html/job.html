@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% block title %}删除职位{% endblock %}
+
+{% block body %}
+
+    <div class="container" style="margin-top:20px;margin-bottom: 500px">
+        <div class="row">
+            <div class="col-sm-10">
+                {% load screenF %}
+                {% for row in zp %}
+                    <article>
+                        <div class="row">
+                            <div class="col-sm-8">
+                                职位名称：
+                                <a class="jobName" target="_blank" href="">{{ row.jobName }}</a>
+                            </div>
+                            <div class="col-sm-4">
+                                职务:
+                                <a class="company" href="">{{ row.jobTitle }}</a>
+                            </div>
+                        </div>
+                        <div class="row" style="height:20px"></div>
+                        <div class="row">
+                            <div class="col-sm-8">
+                                类别:
+                                <a class="salary">{{ row.jobType }}</a>
+                            </div>
+                            <div class="col-sm-4">
+                                <a class="yp" style="color:lightcoral" href="/delete/{{ row.id }}/">删除</a>
+
+                                <a class="yp" style="color:#fff" href="/change/{{ row.id }}/">编辑</a>
+                            </div>
+                        </div>
+                    </article>
+                {% endfor %}
+
+            </div>
+
+        </div>
+    </div>
+
+    {#{% include 'page.html' %}#}
+    <script>
+        $($('.nav-item')[2]).addClass('active');
+    </script>
+{% endblock %}

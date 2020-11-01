@@ -1,0 +1,80 @@
+{% extends 'base.html' %}
+{% block title %}搜索结果{% endblock %}
+{% block div %}
+    <div class="login-box" id="demo">
+        <div class="input-content" style="height: 800px;width:100%;overflow: auto;margin-top: -200px">
+            <p style="font-size: 50px;color: #0E2D5F">线路详细信息</p>
+            <p style="color:red;font-weight: bold">{{ mes }}</p>
+
+            <ul style="color: #CC2222;font-size:24px;width: 600px ">
+                <p style="color: red">
+                    {% for k,v in dict.items %}
+                        {{ k }}:{{ v }}
+                    {% endfor %}
+                </p>
+                {% for i in result %}
+                    {% if data %}
+                        {% if forloop.first %}
+
+                            <li>始发站--{{ i.name }}</li>
+
+                            {% for j in data %}
+                                {% if  i.name == j.sta %}
+                                    <li style="color: white"> 当前--{{ i.name }}</li>
+                                    <div style="font-size: 14px;margin-bottom: 20px;color: white;">
+                                        距下一站大约{{ j.array_time }}分钟
+                                        下一站: {{ j.next_sta }}
+                                    </div>
+                                {% endif %}
+                            {% endfor %}
+                        {% elif forloop.last %}
+
+                            <li>终点站--{{ i.name }}</li>
+                            {% for j in data %}
+                                {% if  i.name == j.sta %}
+                                    <li style="color: white"> 当前--{{ i.name }}</li>
+                                    <div style="font-size: 14px;margin-bottom: 20px;color: white;">
+                                        距下一站大约{{ j.array_time }}分钟
+                                        下一站: {{ j.next_sta }}
+                                    </div>
+                                {% endif %}
+                            {% endfor %}
+                        {% else %}
+
+                            <li>第{{ i.number|add:-11 }}站--{{ i.name }}</li>
+
+                            {% for j in data %}
+                                {% if  i.name == j.sta %}
+                                    <li style="color: white"> 当前--{{ i.name }}</li>
+                                    <div style="font-size: 14px;margin-bottom: 20px;color: white;">
+                                        距下一站大约{{ j.array_time }}分钟
+                                        下一站: {{ j.next_sta }}
+                                    </div>
+                                {% endif %}
+                            {% endfor %}
+                        {% endif %}
+                    {% else %}
+                        {% if forloop.first %}
+
+                            <li> 始发站--{{ i.name }}</li>
+
+                        {% elif forloop.last %}
+                            <li>终点站--{{ i.name }}</li>
+
+                        {% else %}
+
+                            <li>第{{ i.number|add:-11 }}站--{{ i.name }}</li>
+
+                        {% endif %}
+
+                    {% endif %}
+                {% endfor %}
+            </ul>
+            <a style="color: white" href="/st/{{ id }}">反向查询</a>
+        </div>
+        <div class="canvaszz"></div>
+        <canvas id="canvas" style="width: 100%;height: 100%"></canvas>
+
+    </div>
+
+{% endblock %}

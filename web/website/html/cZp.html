@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+
+
+{% block body %}
+    <div class="container" style="margin-top: 50px;margin-bottom: 300px">
+        <div class="col-md-5 offset-md-3">
+
+
+            <form action="/deal_invate/{{ r.id }}/" id="form_zc" method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                {#                {% for k,value in r.items %}#}
+                <div class="form-group">
+                    <label for="name">学院名称：</label>
+                    <input type="text" class="form-control" id="name" placeholder="" name="invate_name"
+                           value="衡水学院" readonly="readonly">
+                </div>
+
+                <div class="form-group">
+                    <label for="name">邀请人：</label>
+                    <input type="text" class="form-control" id="name" placeholder="" name="invate_name"
+                           value="{{ r.com.name }}" readonly="readonly">
+                </div>
+                <div class="form-group">
+                    <label for="name">应聘人：</label>
+                    <input type="text" class="form-control" id="name" placeholder="" name="by_name"
+                           value="{{ r.cv.name }}" readonly="readonly">
+                </div>
+                <div class="form-group">
+                    <label for="name">职位：</label>
+                    <input type="text" class="form-control" id="name" placeholder="" name="by_name"
+                           value="{{ r.zp.jobName }}" readonly="readonly">
+                </div>
+                <div class="form-group">
+                    <label for="name">面试地点：</label>
+                    <input type="text" class="form-control" id="name" placeholder="" name="location"
+                           value="{{ r.location }}" readonly="readonly">
+                </div>
+                <div class="form-group">
+                    <label for="name">面试时间：</label>
+                    <input type="text" class="form-control" id="name" placeholder="" name="tim"
+                           value="{{ r.tim }}" readonly="readonly">
+                </div>
+                <div class="form-group">
+                    <label for="name">需求：</label>
+                    <input type="text" class="form-control" id="name" placeholder="" name="need"
+                           value="{{ r.need }}" readonly="readonly">
+                </div>
+                <div class="form-group">
+                    <label for="name">面试状态：</label>
+                    <input type="text" class="form-control" id="name" placeholder="" name="状态"
+                           value="{% if r.is_have == None %}未处理{% elif r.is_have == True %}已面试{% elif r.is_have == False %}未面试{% endif %}"
+                           readonly="readonly">
+                </div>
+                <div class="form-group">
+                    <label for="name">面试结果：</label>
+                    <input type="text" class="form-control" id="name" placeholder="" name="result"
+                           value="{% if r.result == True %}通过{% elif is_have == True and result == False %}未通过{% endif %}"
+                           readonly="readonly">
+                </div>
+            </form>
+        </div>
+    </div>
+
+
+{% endblock %}

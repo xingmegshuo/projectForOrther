@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% block title %}简历推荐{% endblock %}
+
+{% block body %}
+
+<div class="container" style="margin-top:20px" >
+    <div class="row" >
+        <div class="col-sm-10">
+            {% load screenF %}
+            {% for row in cv %}
+            <article>
+                <div class="row">
+                    <div class="col-sm-8">
+                        名字：
+                        <a class="jobName" target="_blank" href="{{row.resume.url}}">{{ row.name }}</a>
+                        <img src="{{ row.photo.url }}" style="height: 40px;width: 50px">
+                    </div>
+                    <div class="col-sm-4">
+                        性别:
+                        <a class="company" href="">{% if row.sex is False %}女{% else %}男{% endif %}</a>
+                    </div>
+                </div>
+                <div class="row" style="height:20px"></div>
+                <div class="row">
+                    <div class="col-sm-8">
+                        电子邮件:
+                        <a class="salary" >{{ row.user.email }}</a>
+                    </div>
+                    <div class="col-sm-4">
+                        <a class="yp" style="color:#fff" href="/invate/{{ row.id }}/">邀请</a>
+                    </div>
+                </div>
+            </article>
+            {% endfor %}
+                <a class="yp" style="color:red" href="/jlpp">换一批</a>
+
+        </div>
+
+    </div>
+</div>
+
+{#{% include 'page.html' %}#}
+<script>
+    $($('.nav-item')[1]).addClass('active');
+</script>
+{% endblock %}
